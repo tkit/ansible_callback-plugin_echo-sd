@@ -2,14 +2,12 @@
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-#from ansible.plugins.callback import CallbackBase
 from ansible.plugins.callback.default import CallbackModule as CallbackModule_default
 from ansible.module_utils._text import to_bytes, to_text
 import os
 import subprocess
 import pprint
 
-#class CallbackModule(CallbackBase):
 class CallbackModule(CallbackModule_default):
     """
     This callback module brings suddenly death.
@@ -52,7 +50,6 @@ class CallbackModule(CallbackModule_default):
         self.print_echo_sd(task.get_name() + ' start!!!')
 
     def v2_runner_on_ok(self, result):
-        #pprint(result._result)
         if 'msg' in result._result:
           self.print_echo_sd(result._result.pop('msg'))
 
